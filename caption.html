@@ -11,6 +11,14 @@
       border-style: solid;
       background-color: red;
       opacity: 0.5;
+      animation-name: example;
+      animation-duration: 1s;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+    }
+    @keyframes example {
+      from {border-color: red;}
+      to {border-color : white;}
     }
     .caption {
       display:none;
