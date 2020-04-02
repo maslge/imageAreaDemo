@@ -1,0 +1,15 @@
+<div style="position:fixed;left:{{posx}}px;top:{{posy}}px;">
+
+    <div class="captionButton" onclick="showCaption(this)">&nbsp;+&nbsp;</div>
+
+    <div  class="caption">
+      <div class="caption-header">
+        <div style="text-align:center; "><b>{{title}}</b></div>
+        <div style="position:absolute;right:5px;top:2px;background-color: white" onclick="closeCaption(this.parentNode.parentNode)">&nbsp;X&nbsp;</div>
+      </div>
+      <div class="caption-body">
+        {{body}}
+      </div>
+      <div class="caption-footer"><i>{{footer}}</i></div>
+    </div>
+</div>
