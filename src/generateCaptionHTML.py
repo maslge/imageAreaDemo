@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import csv
+import csv, datetime, platform
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -21,7 +21,10 @@ with open('./src/dataCaption.csv') as csv_file:
     #print(output)
 
 template = env.get_template("templateCaptionFullCssPageHTML.html")
-FinalHTMLDocument = template.render(injectFullDivContentHere=output)
+current_date_time = datetime.datetime.now()
+dt_string = current_date_time.strftime('%d/%m/%y %I:%M %S %p')
+info = dt_string + " / " + platform.platform()
+FinalHTMLDocument = template.render(injectFullDivContentHere=output, genTime=info)
 #print(FinalHTMLDocument)
 
 file = open('FinalHTMLDoc.html', 'w')
