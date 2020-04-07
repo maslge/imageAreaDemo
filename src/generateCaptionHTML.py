@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import csv, datetime, platform
+import csv, datetime, platform, getpass
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -23,10 +23,12 @@ with open('./src/dataCaption.csv') as csv_file:
 template = env.get_template("templateCaptionFullCssPageHTML.html")
 current_date_time = datetime.datetime.now()
 dt_string = current_date_time.strftime('%d/%m/%y %I:%M %S %p')
-info = dt_string + " / " + platform.platform()
-FinalHTMLDocument = template.render(injectFullDivContentHere=output, genTime=info)
-#print(FinalHTMLDocument)
+info = dt_string + ", " + platform.platform() + ", " + getpass.getuser()
 
-file = open('FinalHTMLDoc.html', 'w')
+
+FinalHTMLDocument = template.render(injectFullDivContentHere=output, generatedMetaData=info)
+print(FinalHTMLDocument)
+
+file = open('./webcontent/FinalHTMLDoc.html', 'w')
 file.write(FinalHTMLDocument)
 file.close()

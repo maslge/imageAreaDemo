@@ -4,18 +4,22 @@ orbs:
   python: circleci/python@0.2.1
 
 jobs:
-  build-and-test:
+  build:
     executor: python/default
     steps:
       - checkout
-      - python/load-cache
       - python/install-deps
-      - python/save-cache
       - run:
-          command: ./manage.py test
-          name: Test
+          command: ./src/generateCaptionHTML.py
+          name: generate HTML
+      - run :
+          command : tar -czvf build/dofin.tgz webcontent/
+          name : build Web Site
+      - run :
+          command : tar -tzvf build/dofin.tgz & pwd & uname -a & id
+          name : metaData Info
 
 workflows:
   main:
     jobs:
-      - build-and-test
+      - build
