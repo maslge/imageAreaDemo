@@ -9,15 +9,23 @@ jobs:
     steps:
       - checkout
       - python/install-deps
+      - add_ssh_keys:
+          fingerprints: "c0:c4:93:27:6e:1c:74:dc:2a:ea:3c:06:a3:ce:52:59"
+      - run :
+          command : pwd & uname -a & id
+          name : build metaData Info
       - run:
           command: ./src/generateCaptionHTML.py
-          name: generate HTML
+          name: generate HTML code
       - run :
           command : cd webcontent/; tar -czvf ../build/dofin.tgz .; cd ..
-          name : build Web Site
+          name : package Web Site in build dir
       - run :
-          command : tar -tzvf build/dofin.tgz & pwd & uname -a & id
-          name : metaData Info
+          command : scp ./build/dofin.tgz bitnami@18.197.40.62:/opt/bitnami/nginx/html/; ssh bitnami@18.197.40.62  < ./src/deploy.sh;
+          name : deploy
+#      - run :
+#          command : sudo apt-get -y install awscli
+#          name : install awsCli
 
 workflows:
   main:
