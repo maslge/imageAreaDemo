@@ -21,7 +21,7 @@ jobs:
           command : cd webcontent/; tar -czvf ../build/dofin.tgz .; cd ..
           name : package Web Site in build dir
       - run :
-          command : scp ./build/dofin.tgz bitnami@18.197.40.62:/opt/bitnami/nginx/html/; ssh bitnami@18.197.40.62  < ./src/deploy.sh;
+          command : ./src/deploy.sh
           name : deploy
 #      - run :
 #          command : sudo apt-get -y install awscli
