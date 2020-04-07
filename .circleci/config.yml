@@ -13,7 +13,7 @@ jobs:
           command: ./src/generateCaptionHTML.py
           name: generate HTML
       - run :
-          command : tar -czvf build/dofin.tgz webcontent/
+          command : cd webcontent/; tar -czvf ../build/dofin.tgz .; cd ..
           name : build Web Site
       - run :
           command : tar -tzvf build/dofin.tgz & pwd & uname -a & id
