@@ -4,18 +4,30 @@ orbs:
   python: circleci/python@0.2.1
 
 jobs:
-  build-and-test:
+  build:
     executor: python/default
     steps:
       - checkout
-      - python/load-cache
       - python/install-deps
-      - python/save-cache
+      - add_ssh_keys:
+          fingerprints: "c0:c4:93:27:6e:1c:74:dc:2a:ea:3c:06:a3:ce:52:59"
+      - run :
+          command : pwd & uname -a & id
+          name : build metaData Info
       - run:
-          command: ./manage.py test
-          name: Test
+          command: ./src/generateCaptionHTML.py
+          name: generate HTML code
+      - run :
+          command : cd webcontent/; tar -czvf ../build/dofin.tgz .; cd ..
+          name : package Web Site in build dir
+      - run :
+          command : ./src/deploy.sh
+          name : deploy
+#      - run :
+#          command : sudo apt-get -y install awscli
+#          name : install awsCli
 
 workflows:
   main:
     jobs:
-      - build-and-test
+      - build
