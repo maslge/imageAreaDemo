@@ -1,84 +1,34 @@
 <!DOCTYPE html>
 <!-- keep - {{generatedMetaData}} -->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <style>
-    div.captionButton {
-      border-radius:50%;
-      border-style: solid;
-      background-color: red;
-      opacity: 0.5;
-      animation-name: example;
-      animation-duration: 1s;
-      animation-direction: alternate;
-      animation-iteration-count: infinite;
-      /*transition: all 0s; /* transition when the mouse over */
-    }
-    @keyframes example {
-      from {border-color: red;}
-      to {border-color : white;}
-    }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    div.captionManager div.caption {
-      display:none;
-      border-radius:0%;
-    }
-    div.captionManager:hover {
-      border-radius:0%;
-      /*opacity: 1;*/
-    }
-    div.captionManager:hover div.caption {
-      display:block;
-    }
-    div.captionManager:hover div.captionButton {
-      display:none;
+  <link rel="stylesheet" type="text/css" href="caption.css"/>
+  <title>{{text_title}}</title>
 
-    }
-    div.caption{
-      border-color: black;
-      border-width: 2px;
-    }
-    div.caption-header {
-      background-color:lightgreen;
-      padding : 10px 10px 10px 10px;
-    }
-    div.caption-body{
-      background-color: white;
-      padding : 10px 10px 10px 10px;
-    }
-    div.caption-footer {
-      background-color: lightgreen;
-      padding : 10px 10px 10px 10px;
-  }
+</head>
 
+<body>
+  <h1>{{text_title}}</h1>
 
-    </style>
+  <p>{{text_body_intro}}</p>
 
-    <title>Document</title>
-  </head>
+  <div style="margin: auto;position:relative; width:1466px; height:831px;border: 5px dashed red;">
 
-  <body>
-    <h1>Hello los amigos ...</h1>
+    <img src="ToolchainDotNet.png" alt="HTML Image Map" width=1466px height=831px border="1" />
 
-    <p>Blablabla</p>
+    {{injectFullDivContentHere}}
 
-    <div style="margin: auto;position:relative; width:1466px; height:831px;border: 5px dashed red;">
+  </div>
 
-      <img src="ToolchainDotNet.png" alt="HTML Image Map" width=1466px height=831px border="1"/>
+  <p>{{text_body_conclusion}}</p>
 
-      {{injectFullDivContentHere}}
+  <p align="right"><i>{{generatedMetaData}}<i></p>
 
-    </div>
+</body>
 
-    <p>Blablabla</p>
-
-    <h2>Footer info ...</h2>
-
-    <p align="right"><i>{{generatedMetaData}}<i></p>
-
-  </body>
 </html>
