@@ -1,7 +1,7 @@
 <!-- see https://jinja.palletsprojects.com/en/2.11.x/templates/ -->
 
 <!DOCTYPE html>
-<!-- keep - 20/04/20 08:39 37 PM, Linux-5.3.0-46-generic-x86_64-with-Ubuntu-18.04-bionic, bdarras -->
+<!-- keep - {{generatedMetaData}} -->
 <html lang="en">
 
 <head>
@@ -23,19 +23,13 @@
 
     <ul>
 
-      
+      {% for item in toolchainsList %}
       <li>
         item
-        <a href="example.html"><img src="example.png" width=100px height=100px border="1" />
+        <a href="{{ item }}.html"><img src="{{ item }}.png" width=100px height=100px border="1" />
         </a>
       </li>
-      
-      <li>
-        item
-        <a href="toolchainDotNet.html"><img src="toolchainDotNet.png" width=100px height=100px border="1" />
-        </a>
-      </li>
-      
+      {% endfor %}
 
 
     </ul>
@@ -45,7 +39,7 @@
 
   <p>un peu de blabla</p>
 
-  <p align="right"><i>20/04/20 08:39 37 PM, Linux-5.3.0-46-generic-x86_64-with-Ubuntu-18.04-bionic, bdarras<i></p>
+  <p align="right"><i>{{generatedMetaData}}<i></p>
 
 </body>
 
