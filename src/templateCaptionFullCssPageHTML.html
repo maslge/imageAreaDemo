@@ -16,10 +16,11 @@
   <h1>{{text_title}}</h1>
 
   <p>{{text_body_intro}}</p>
+  <!-- div style="margin: auto;position:relative; width:1466px; height:831px;border: 5px dashed red;" -->
 
-  <div style="margin: auto;position:relative; width:1466px; height:831px;border: 5px dashed red;">
+  <div style="margin: auto;position:relative; width:{{imageWidth}}; height:{{imageHeight}};border: 5px dashed red;">
 
-    <img src="{{toolchainPNGFile}}" alt="HTML Image Map" width=1466px height=831px border="1" />
+    <img src="{{toolchainPNGFile}}" width="{{imageWidth}}" height="{{imageHeight}}" border="1" />
 
     {{injectFullDivContentHere}}
 

@@ -21,7 +21,7 @@ jobs:
           command : cd webcontent/; tar -czvf ../build/dofin.tgz .; cd ..
           name : package Web Site in build dir
       - run :
-          command : ./src/deploy.sh
+          command : ./deploy/deploy.sh
           name : deploy
 #      - run :
 #          command : sudo apt-get -y install awscli

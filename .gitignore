@@ -1,2 +1,4 @@
 # exclude build dir
 build/
+webcontent/*.html
+webcontent/*.png

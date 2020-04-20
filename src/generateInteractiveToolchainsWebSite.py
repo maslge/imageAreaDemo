@@ -35,10 +35,12 @@ def generateInteractiveImage(name):
         for row in csv_reader:
             #print(row[0],row[1],row[2], row[3], row[4] )
             if (line_count == 0 ):
-                # premire ligne = les titre et le blabla du doc master
+                # premire ligne = les titre et le blabla du doc master et les dimensions de l'image
                 text_title=posx=row[0]
                 text_body_intro=row[1]
                 text_body_conclusion=row[2]
+                imageWidth=row[3]
+                imageHeight=row[4]
             else:
                 # les autres lignes les datas pour les captions dans l'image
                 output += templateInteractiveImage_Caption.render(posx=row[0], posy=row[1], title=row[2], body=row[3], footer=row[4])
@@ -47,7 +49,7 @@ def generateInteractiveImage(name):
     #print('Processed ', line_count ,' lines.')
     #print(output)
     toolchainPNGFile = name + ".png"
-    htmlInteractiveImage = templateInteractiveImage_HTMLDoc.render(toolchainPNGFile=toolchainPNGFile, text_title=text_title, text_body_intro=text_body_intro, text_body_conclusion=text_body_conclusion, injectFullDivContentHere=output, generatedMetaData=generatedMetaData)
+    htmlInteractiveImage = templateInteractiveImage_HTMLDoc.render(toolchainPNGFile=toolchainPNGFile, text_title=text_title, text_body_intro=text_body_intro, text_body_conclusion=text_body_conclusion, imageWidth=imageWidth, imageHeight=imageHeight, injectFullDivContentHere=output, generatedMetaData=generatedMetaData)
 
     file = open("./webcontent/" + name + ".html", 'w')
     file.write(htmlInteractiveImage)

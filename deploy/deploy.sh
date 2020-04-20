@@ -5,4 +5,4 @@
 scp -o "StrictHostKeyChecking=no" ./build/dofin.tgz bitnami@18.197.40.62:/opt/bitnami/nginx/html/
 
 #from https://unix.stackexchange.com/questions/349425/ssh-command-and-non-interactive-non-login-shell
-ssh -o "StrictHostKeyChecking=no" bitnami@18.197.40.62  < ./src/deployOnRemoteHost.sh;
+ssh -o "StrictHostKeyChecking=no" bitnami@18.197.40.62  < ./deploy/deployOnRemoteHost.sh;
