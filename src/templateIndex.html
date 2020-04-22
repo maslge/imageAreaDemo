@@ -23,11 +23,9 @@
 
     <ul>
 
-      {% for item in toolchainsList %}
+      {% for name, title in indexMap.items() %}
       <li>
-        {{item}}
-        <a href="{{ item }}.html"><img src="{{ item }}.png" width=100px height=100px border="1" />
-        </a>
+        {{title}}  <a href="{{ name }}.html"><img src="{{ name }}.png" width=100px height=100px border="1" /></a>
       </li>
       {% endfor %}
 
