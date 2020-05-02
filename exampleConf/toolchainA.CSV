@@ -1,0 +1,4 @@
+"name","headerhtml","footerhtml","picture__file","picture__width","picture__height","captions__posx","captions__posy","captions__popup__headerText","captions__popup__bodyhtml","captions__popup__footertext"
+"name of the toolchain (i.e the tilte in the doc HTML @ the end)","test","<p>le bla bla que je veux <a href=""http://www.google.fr"">test.url</a>mettre en intro de ma page HTML</p>","toolchainAAAA.png","1450px","850px","100px","50px","blabla","blabla","blabla"
+"","","","","","","10px","50px","blabla","blabla","blabla"
+"","","","","","","150px","50px","blabla","blabla","blabla"

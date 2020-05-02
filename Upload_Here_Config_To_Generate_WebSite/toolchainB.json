@@ -1,0 +1,43 @@
+{
+    "name" : "name of the toolchain (i.e the tilte in the doc HTML @ the end)",
+    "headerhtml" : "blabla que je veux mettre en intro de ma page :)",
+    "footerhtml" : "<p>le bla bla que je veux <a href=\"http://www.google.fr\">test.url</a>mettre en conclusion  de ma page HTML</p>",
+
+    "picture" : {
+        "file" : "toolchainA.png",
+        "width" : "1450px",
+        "height" : "850px"
+    },
+
+    "captions" : [
+        {
+            "posx" : "100px",
+            "posy" : "50px",
+            "popup" :  {
+                "headerText" : "Orchestrator",
+                "bodyhtml" : "blablabb c'et quoi une orche",
+                "footertext" : "blabla"
+            }
+        },
+        {
+            "posx" : "10px",
+            "posy" : "50px",
+            "popup" : {
+                "headerText" : "soanr",
+                "bodyhtml" : "sonar",
+                "footertext" : "sonar"
+            }
+        },
+        {
+            "posx" : "150px",
+            "posy" : "50px",
+            "popup" :  {
+                "headerText" : "nexus",
+                "bodyhtml" : "nexus",
+                "footertext" : "nexus"
+            }
+        }
+    ]
+
+
+}
