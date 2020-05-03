@@ -4,6 +4,7 @@ import getpass
 import json
 import platform
 import os
+import csv
 
 from jinja2 import Environment, FileSystemLoader, Template
 from pykson import Pykson, JsonObject, StringField, ObjectListField, ObjectField
@@ -85,14 +86,14 @@ class InteractiveImage:
         self.picture = picture
         self.captions = captions
 
-    def renderHtmlForCaptions(self) -> str:
+    def __renderHtmlForCaptions__(self) -> str:
         captionsContent = ""
         for caption in self.captions:
             captionsContent += caption.renderHTML()
         return captionsContent
 
     def renderHtmlContentWithTemplates(self) -> str:
-        c = self.renderHtmlForCaptions()
+        c = self.__renderHtmlForCaptions__()
         return TEMPLATE_INTERACTIVE_IMAGE_HTMLDOC.render(toolchainPNGFile=self.picture.file, text_title=self.title, text_body_intro=self.headerHtml, text_body_conclusion=self.footerHtml, imageWidth=self.picture.width, imageHeight=self.picture.height, injectFullDivContentHere= c, generatedMetaData=GENERATED_METADATA)
 
 
@@ -135,19 +136,51 @@ class InteractiveImagesReaderForJSON(JsonObject):
     picture = ObjectField(PictureReaderForJSON)
     captions = ObjectListField(CaptionReaderForJSON)
 
-    def export(self) -> InteractiveImage:
+    def __export__(self) -> InteractiveImage:
         caption2R = []
         for c in self.captions:
             caption2R.append(c.export())
         return InteractiveImage(self.name, self.headerhtml, self.footerhtml, self.picture.export(), caption2R)
 
 
-    def readConfigAndGenerateInteractiveImagesReaderFromJSON(filename : str):
+    def __readConfigAndGenerateInteractiveImagesReaderFromJSON__(filename : str):
         with open(filename, "r") as toolchainDataJson_file:
             json_doc = json.load(toolchainDataJson_file)
         print(json_doc)
         t = Pykson().from_json(json_doc, InteractiveImagesReaderForJSON)
         return t
+
+    def generateInteractiveImagesFromJSONConfFile(filename : str) -> InteractiveImage :
+        toolchain = InteractiveImagesReaderForJSON.__readConfigAndGenerateInteractiveImagesReaderFromJSON__(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + f)
+        return toolchain.__export__()
+
+
+
+class InteractiveImagesReaderForCSV():
+    """
+        Todo blabla
+    """
+
+    def generateInteractiveImagesFromCSVConfFile(filename : str): #todo revoir filename : str ... pourquoi pas file directement !!!!
+        captions = list()
+        picture : Picture
+        title : str
+        body_intro :str
+        body_conclusion : str
+        with open(filename, "r") as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=',')
+            line_count = 0
+            for row in csv_reader:
+                print(row)
+                if (line_count == 0):
+                    title = row[0]
+                    body_intro = row[1]
+                    body_conclusion = row[2]
+                    picture = Picture(row[3], row[4], row[5])
+                captions.append(Caption(row[6], row[7], row[8], row[9], row[10]))
+                line_count += 1
+        return InteractiveImage(title, body_intro, body_conclusion, picture, captions)
+
 
 
 interactiveImagesMap = {}
@@ -163,17 +196,17 @@ for f in files :
         Parcourir la liste des fichiers de conf, les lit et generate les interactiveimage assosciées
     """
     if f.endswith(".json"):
-        print("try reading from file : " + f)
-        toolchain = InteractiveImagesReaderForJSON.readConfigAndGenerateInteractiveImagesReaderFromJSON(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + f)
-        print(toolchain.name)
-        # build the instance of ii from the deserialized data
+
         interactiveImageID = os.path.splitext(f)[0]
-        interactiveImage = toolchain.export()
+        interactiveImage = InteractiveImagesReaderForJSON.generateInteractiveImagesFromJSONConfFile(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + f)
         interactiveImagesMap[interactiveImageID] = interactiveImage
 
-    elif f.endswith(".csv"):
-        print("csv not currently implemented")
-        raise Exception
+    elif f.endswith(".CSV"):
+
+        interactiveImageID = os.path.splitext(f)[0]
+        interactiveImage = InteractiveImagesReaderForCSV.generateInteractiveImagesFromCSVConfFile(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + f)
+        interactiveImagesMap[interactiveImageID] = interactiveImage
+
     elif f.endswith(".xml"):
         print("xml not currently implemented")
         raise Exception
@@ -187,11 +220,11 @@ for interactiveImageID, interactiveImage in interactiveImagesMap.items():
     file = open(DIRECTORY_WEBCONTENT + interactiveImageID + ".html", 'w')
     file.write(interactiveImage.renderHtmlContentWithTemplates())
     file.close()
-    copyfile(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + interactiveImageID + ".png", DIRECTORY_WEBCONTENT +  interactiveImageID + ".png")
+    copyfile(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + interactiveImage.picture.file, DIRECTORY_WEBCONTENT + interactiveImage.picture.file)
     indexMap[interactiveImageID] = interactiveImage.title
 
 output = TEMPLATE_INDEX_HTML.render(indexMap=indexMap, generatedMetaData=GENERATED_METADATA)
-file = open("./webContent/index.html", 'w')
+file = open(DIRECTORY_WEBCONTENT + "index.html", 'w')
 file.write(output)
 file.close()
 
