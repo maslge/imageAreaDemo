@@ -7,18 +7,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="caption.css"/>
   <title>{{text_title}}</title>
 
 </head>
 
 <body>
-  <h1>{{text_title}}</h1>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>{{text_title}}</h1>
+  </div>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+
 
   <p>{{text_body_intro}}</p>
   <!-- div style="margin: auto;position:relative; width:1466px; height:831px;border: 5px dashed red;" -->
 
-  <div style="margin: auto;position:relative; width:{{imageWidth}}; height:{{imageHeight}};border: 5px dashed red;">
+  <div style="margin: auto;position:relative; width:{{imageWidth}}; height:{{imageHeight}};border: 0px dashed red;">
 
     <img src="{{toolchainPNGFile}}" width="{{imageWidth}}" height="{{imageHeight}}" border="1" />
 
@@ -27,8 +59,9 @@
   </div>
 
   <p>{{text_body_conclusion}}</p>
+</div>
 
-  <p align="right"><i>{{generatedMetaData}}<i></p>
+<p align="right"><i><font size="-2">{{generatedMetaData}}</font><i></p>
 
 </body>
 

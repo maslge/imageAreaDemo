@@ -49,19 +49,21 @@
   div.caption {
     border-color: black;
     border-width: 2px;
+    max-width:400px;
+    /*z-index:3;*/
   }
 
   div.caption-header {
-    background-color: lightgreen;
+    background-color: silver;
     padding: 10px 10px 10px 10px;
   }
 
   div.caption-body {
-    background-color: white;
+    background-color: snow;
     padding: 10px 10px 10px 10px;
   }
 
   div.caption-footer {
-    background-color: lightgreen;
+    background-color: silver;
     padding: 10px 10px 10px 10px;
   }

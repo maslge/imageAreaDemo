@@ -1,12 +1,12 @@
 {
-    "name" : "name of the toolchain (i.e the tilte in the doc HTML @ the end)",
-    "headerhtml" : "blabla que je veux mettre en intro de ma page :)",
+    "name" : "Toolchain .NET/IIS ITCLoud",
+    "headerhtml" : "<p>la Toolchain .NET née en 2018 et l'evolution de la toolchain Java, pour plus d'info voir : portail T&S / PICO</p>",
     "footerhtml" : "<p>le bla bla que je veux <a href=\"http://www.google.fr\">test.url</a>mettre en conclusion  de ma page HTML</p>",
 
     "picture" : {
         "file" : "toolchainA.png",
         "width" : "1450px",
-        "height" : "850px"
+        "height" : "800px"
     },
 
     "captions" : [
@@ -15,8 +15,8 @@
             "posy" : "50px",
             "popup" :  {
                 "headerText" : "Orchestrator",
-                "bodyhtml" : "blablabb c'et quoi une orche",
-                "footertext" : "blabla"
+                "bodyhtml" : "L'orchestrateur est la pièce centrale de la plateforme d'integration <br/>continue car c'est le moteur qui va lancer succèssivement toutes les phases permettant <br/>le build de l'application <img src=\"./build.png\" width=\"50\" height=\"50\"> (recuperation du code dans Git, la comilation, les quality gates et pousser le livrable dans nexus : Jenkins est le produit qui joue ce role d'orchstrateur chez PF <a href=\"http://devpico-pfc.rb.echonet\">jenkins</a>",
+                "footertext" : "blabla si necessaire sinon ... rien"
             }
         },
         {
