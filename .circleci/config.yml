@@ -15,10 +15,10 @@ jobs:
           command : pwd & uname -a & id
           name : build metaData Info
       - run:
-          command: ./src/generateInteractiveToolchainsWebSite.py
+          command: ./interactiveImageGenerator.py
           name: generate HTML code
       - run :
-          command : cd webcontent/; tar -czvf ../build/dofin.tgz .; cd ..
+          command : mkdir -p build; cd webContent/; tar -czvf ../build/dofin.tgz .; cd ..
           name : package Web Site in build dir
       - run :
           command : ./deploy/deploy.sh
