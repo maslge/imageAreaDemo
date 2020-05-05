@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # from  https://www.programiz.com/python-programming/closure
 # https://docs.python-guide.org/writing/structure/
