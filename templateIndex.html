@@ -50,18 +50,18 @@
 <div class="container-fluid">
 
 
-   <p>The DevOps@PF program (Dofin) aims to developed & deployed tools suite to speed up developpment and delivery process (Todo mettre un lien vers le doc d'evangelisation) a.k.a toolchain.</p>
-   <p>Each development and hosting platefom is coming with is own dedicated version of the toolchain : Java/WasND, .NET/IIS, SQL/Oracle, SQL/M$ SQL server and more to come.</p>
-    <p>This web site is a dedicated place for getting hight level of information about the toolchains why built and drill down into dedicated documentation in order to give you a full understanding and access to all the tooling composing the toolchains : let's see by your self by selecting your favorite one : </p>
+   <p>The DevOps@PF program (Dofin) aims to developed & deployed tools suite to speed up development and delivery process (Todo mettre un lien vers le doc d'evangelisation) a.k.a toolchain.</p>
+   <p>Each development and hosting platefom is coming with is own dedicated version of the toolchain : Java + WasND, .NET + IIS, SQL + Oracle, SQL + M$ SQL server and many more to come.</p>
+   <p>This web site is a dedicated place for getting high level informations about the toolchains and give you access to dedicated documentation to have  you a full understanding and access to all the tooling composing the toolchains : let's see by your self by selecting your favorite one : </p>
 
   <div style="margin: auto;position:relative; ">
 
 
     <ul>
 
-      {% for name, title in indexMap.items() %}
+      {% for name, (title, file) in indexMap.items() %}
       <li>
-        {{title}}  <a href="{{ name }}.html"><img src="{{ name }}.png" width=100px height=100px border="1" /></a>
+        {{title}}  <a href="{{ name }}.html"><img src="{{ file }}" width=100px height=100px border="1" /></a>
       </li>
       {% endfor %}
 

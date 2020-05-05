@@ -5,6 +5,7 @@ import json
 import platform
 import os
 import csv
+import xml.etree.ElementTree as ET
 
 from jinja2 import Environment, FileSystemLoader, Template
 from pykson import Pykson, JsonObject, StringField, ObjectListField, ObjectField
@@ -182,8 +183,28 @@ class InteractiveImagesReaderForCSV():
         return InteractiveImage(title, body_intro, body_conclusion, picture, captions)
 
 
+class InteractiveImagesReaderForXML():
+
+    def getInteractiveImageFromConfFile(filename : str):
+        captions = list()
+        picture: Picture
+        title: str
+        body_intro: str
+        body_conclusion: str
+        tree = ET.parse(filename)
+        root = tree.getroot()
+        body_intro =  root.find("headerhtml").text
+        body_conclusion = root.find("footerhtml").text
+        title = root.find("name").text
+        pictureElt = root.find('picture')
+        picture = Picture(pictureElt.attrib['file'], pictureElt.attrib['width'], pictureElt.attrib['height'])
+        for captionElement in root.findall("caption"):
+            captions.append(Caption(captionElement.attrib['posx'], captionElement.attrib['posy'], captionElement[0][0].text, captionElement[0][1].text, captionElement[0][2].text))
+        return InteractiveImage(title, body_intro, body_conclusion, picture, captions)
+
 
 interactiveImagesMap = {}
+
 
 # lecture et analyse de la conf
 files = listdir(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE)
@@ -191,28 +212,30 @@ print ("contenu du repertoire source pour la generation : ")
 print (files)
 
 for f in files :
-# deserialize from the source file
-    """
-        Parcourir la liste des fichiers de conf, les lit et generate les interactiveimage assosciées
-    """
+    interactiveImageID = os.path.splitext(f)[0]
+
+
     if f.endswith(".json"):
 
-        interactiveImageID = os.path.splitext(f)[0]
         interactiveImage = InteractiveImagesReaderForJSON.generateInteractiveImagesFromJSONConfFile(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + f)
-        interactiveImagesMap[interactiveImageID] = interactiveImage
+        interactiveImagesMap[interactiveImageID] = interactiveImage # supprimer duplication de code
 
     elif f.endswith(".CSV"):
 
-        interactiveImageID = os.path.splitext(f)[0]
         interactiveImage = InteractiveImagesReaderForCSV.generateInteractiveImagesFromCSVConfFile(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + f)
         interactiveImagesMap[interactiveImageID] = interactiveImage
 
     elif f.endswith(".xml"):
-        print("xml not currently implemented")
-        raise Exception
+
+        interactiveImage = InteractiveImagesReaderForXML.getInteractiveImageFromConfFile(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + f)
+        interactiveImagesMap[interactiveImageID] = interactiveImage
+
     elif f.endswith(".yaml"):
-        print("xml not currently implemented")
+
+        print("yaml not currently implemented")
         raise Exception
+
+
 
 # generation du site
 indexMap = {} #name=interactiveImageID, title=interactiveImage.
@@ -221,7 +244,7 @@ for interactiveImageID, interactiveImage in interactiveImagesMap.items():
     file.write(interactiveImage.renderHtmlContentWithTemplates())
     file.close()
     copyfile(DIRECTORY_OF_SRC_CONFIG_TO_GENERATE_WEBSITE + interactiveImage.picture.file, DIRECTORY_WEBCONTENT + interactiveImage.picture.file)
-    indexMap[interactiveImageID] = interactiveImage.title
+    indexMap[interactiveImageID] = (interactiveImage.title, interactiveImage.picture.file)
 
 output = TEMPLATE_INDEX_HTML.render(indexMap=indexMap, generatedMetaData=GENERATED_METADATA)
 file = open(DIRECTORY_WEBCONTENT + "index.html", 'w')

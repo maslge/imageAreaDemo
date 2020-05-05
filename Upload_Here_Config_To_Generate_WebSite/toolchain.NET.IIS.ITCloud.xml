@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<interactive-image>
+	<name>Toolchain .NET-IIS / ITCloud</name>
+	<headerhtml>
+	    <![CDATA[
+	    	<p> Hello les guys, <a href="http://jenkins-pfc.rb.echonet/">jenkins</a> blabla à mettre en intro de ma page HTML</p>
+	    ]]>
+    </headerhtml>
+	<footerhtml>
+        <![CDATA[
+            <p>le bla bla que je veux <a href="http://www.google.fr">test.url</a> mettre en bas de l'image</p>
+        ]]>
+    </footerhtml>
+	<picture file="toolchain.NET.IIS.ITCloud.png" width="1300px" height="650px" />
+	<caption posx="350px" posy="180px">
+		<popup>
+			<headerText>Orchestrator Jenkins</headerText>
+			<bodyhtml><![CDATA[
+				L'orchestrateur est la pièce centrale de la plateforme d'integration continue car
+				c'est le moteur qui va lancer succèssivement toutes les phases permettant le build
+				de l'application <img src="build.png" width="50px" height="50px">
+				 (recuperation du code dans Git, la compilation des sources, les test unitaires, les quality gates ...
+				 pour finalement uploader le livrable war, ... dans le repo d'arctifact nexus.<br/>
+				 Jenkins est le produit qui joue ce role d'orchestrateur chez PF aujourd'hui, lien pour accèder à <a href="http://devpico-pfc.rb.echonet">jenkins</a>
+			]]></bodyhtml>
+			<footertext>footer</footertext>
+		</popup>
+	</caption>
+	<caption posx="800px" posy="150px">
+		<popup>
+			<headerText>Artifact Repository / Nexus</headerText>
+			<bodyhtml><![CDATA[ Nexus => dependancies downloading and store our artifact <img src="build.png" width="50px" height="50px"/> <a href="https://sonatype.com">Nexus web site</a>]]></bodyhtml>
+			<footertext>blabla</footertext>
+		</popup>
+	</caption>
+	<caption posx="300px" posy="250px">
+		<popup>
+			<headerText>Version Control System</headerText>
+			<bodyhtml><![CDATA[ GitLab is a version control system to manage code of all your project : collaboration, sharing, storing version, ... <a href="https://git-scm.com/">git web site</a> ]]></bodyhtml>
+			<footertext>todo mettre les liens utiles vers gitLab, gitHub, ..</footertext>
+		</popup>
+	</caption>
+</interactive-image>
