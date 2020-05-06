@@ -1,10 +1,10 @@
 {
-    "name" : "Toolchain Java/Was ND ITCloud",
+    "name" : "Toolchain Java/Was ND ITCloud)",
     "headerhtml" : "blabla que je veux mettre en intro de ma page :)",
     "footerhtml" : "<p>le bla bla que je veux <a href=\"http://www.google.fr\">test.url</a>mettre en conclusion  de ma page HTML</p>",
 
     "picture" : {
-        "file" : "toolchainA.png",
+        "file" : "toolchainB.png",
         "width" : "1450px",
         "height" : "850px"
     },

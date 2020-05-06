@@ -33,7 +33,7 @@
 			<footertext>blabla</footertext>
 		</popup>
 	</caption>
-	<caption posx="300px" posy="250px">
+	<caption posx="850px" posy="250px">
 		<popup>
 			<headerText>Version Control System</headerText>
 			<bodyhtml><![CDATA[ GitLab is a version control system to manage code of all your project : collaboration, sharing, storing version, ... <a href="https://git-scm.com/">git web site</a> ]]></bodyhtml>
