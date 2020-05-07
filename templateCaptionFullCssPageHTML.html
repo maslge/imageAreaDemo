@@ -19,9 +19,23 @@
 
 <body>
 
-<div class="jumbotron text-center" style="margin-bottom:0">
+<div>
+  <div style="position:absolute; top: 20px; right:10px">
+    <img src="devopsCredito.png" width="37px" height="60px"/>
+  </div>
+  <div style="padding:20px 20px; text-align: center;background-color:WhiteSmoke">
     <h1>{{text_title}}</h1>
   </div>
+</div>
+
+<nav aria-label="breadcrumb" style="background-color:WhiteSmoke">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="#">{{text_title}}</li>
+  </ol>
+</nav>
+
+
 
 <div class="container-fluid">
 
@@ -39,6 +53,13 @@
 
   <p>{{text_body_conclusion}}</p>
 </div>
+
+
+  <footer class="footer" style="padding:5px 5px;background-color:WhiteSmoke">
+      <img src="Dofin.jpg" width="72" height="32">
+      <span class="text-muted">keep in touch with the Dofin team : <a href="maito:bruno.darras@bnpparibas-pf.com">mailto:dofin@bnpparibas.com</a> / @mattermost channel / @Teams channel / Dofin SharePoint URL, ...
+      </span>
+  </footer>
 
 <p align="right"><i><font size="-2">{{generatedMetaData}}</font><i></p>
 

@@ -11,7 +11,7 @@
             <p>le bla bla que je veux <a href="http://www.google.fr">test.url</a> mettre en bas de l'image</p>
         ]]>
     </footerhtml>
-	<picture file="toolchain.NET.IIS.ITCloud.png" width="1300px" height="650px" />
+	<picture file="Toolchain.NET.IIS.ITCLOUD.png" width="1264px" height="596px" />
 	<caption posx="350px" posy="180px">
 		<popup>
 			<headerText>Orchestrator Jenkins</headerText>
