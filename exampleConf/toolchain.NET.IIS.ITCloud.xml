@@ -29,21 +29,15 @@
 	<caption posx="667px" posy="154px">
 		<popup>
 			<headerText>Artifact Repository / Nexus</headerText>
-			<bodyhtml><![CDATA[ As part of the development lifecycle, source code is continuously being built into binary artifacts using continuous integration. This may interact with a binary repository manager much like a developer would by getting artifacts from the repositories and pushing builds there.  <img src="build.png" width="50px" height="50px"/> <a href="https://sonatype.com">Nexus web site</a>]]></bodyhtml>
-			<footertext><![CDATA[
-					<a href="https://www.sonatype.com/product-nexus-repository" target="_blank">Sonatype Nexus</a>, <a href="https://www.sonatype.com/product-nexus-lifecycle" target="_blank">Nexus LifeCycle</a>
-				]]></footertext>
+			<bodyhtml><![CDATA[ Nexus => dependancies downloading and store our artifact <img src="build.png" width="50px" height="50px"/> <a href="https://sonatype.com">Nexus web site</a>]]></bodyhtml>
+			<footertext>blabla</footertext>
 		</popup>
 	</caption>
 	<caption posx="307px" posy="236px">
 		<popup>
-			<headerText>Version Control System - GitLab</headerText>
+			<headerText>Version Control System</headerText>
 			<bodyhtml><![CDATA[ GitLab is a version control system to manage code of all your project : collaboration, sharing, storing version, ... <a href="https://git-scm.com/">git web site</a> ]]></bodyhtml>
-			<footertext>
-				<![CDATA[
-					<a href="https://gitlab.com" target="_blank">GitLab Home</a>, <a href="https://www.git-tower.com/learn/git/ebook/en/desktop-gui/basics/why-use-version-control" target="_blank">Why using CSV</a>
-				]]>
-			</footertext>
+			<footertext>todo mettre les liens utiles vers gitLab, gitHub, ..</footertext>
 		</popup>
 	</caption>
 </interactive-image>
